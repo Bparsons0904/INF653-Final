@@ -10,21 +10,36 @@
 
 
 #quotes-display {
+  
   .select-container {
     position: sticky;
     top: 0;
     display: grid;
     justify-items: center;
-    margin-bottom: 2em;
+    margin: 0 auto 2em;
     .select-wrapper {
       width: 85%;
       background: #000;
+      margin: auto;
     }
     .btn-clear {
       // margin: .5em auto;
       width: 100%;
       padding: 0;
     }
+    .toggle-btn {
+      margin-top: .5em;
+    }
+    .textarea {
+      width: 100%;
+
+      overflow-x: hidden;
+    }
+    .cancel-btn {
+      background-color: #d7f93b;
+      color: $color-dark;
+    }
+
   }
 
   #quote-container {
@@ -48,6 +63,15 @@
         }
       }
     }
+  }
+
+  #submit-grp {
+    display: none;
+  }
+
+  #no-match {
+    text-align: center;
+
   }
 
   // #quote-container {

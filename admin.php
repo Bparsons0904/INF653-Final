@@ -5,7 +5,11 @@
     // require('./model/type_db.php');
     // require('./model/class_db.php');
     // require('./model/make_db.php');
-   
+   $display = 'view/pages/quotes.php';
+    $action = filter_input(INPUT_GET, 'action');
+    if ($action == "approval") {
+       $display = 'view/pages/approvals.php';
+    }
     // Set variables for filters
     // $typeID = filter_input(INPUT_GET, 'typeID', FILTER_VALIDATE_INT);
     // $classID = filter_input(INPUT_GET, 'classID', FILTER_VALIDATE_INT);
@@ -20,11 +24,10 @@
 
     // Set array of all vehicles matching filter selections
     $quotes = getApprovals();
-    print_r($quotes);
+
     // Include required files
     include('view/pages/header.php');
-    // include('view/vehicles.php');
-    include('view/pages/footer.php');
+    include('view/pages/navigation_admin.php');
+    include($display);
+    // include('view/pages/footer.php');
 ?>
-
-<div class="hello">Hello World</div>
