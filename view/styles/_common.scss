@@ -2,9 +2,9 @@ body {
   margin: 0;
   padding: 0;
   width: 100vw;
-  // max-width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
-//   overflow-x: hidden;
+  overflow-x: hidden;
   color: $color-primary-light;
   font-size: 1em;
   font-family: $font-sans;
@@ -86,4 +86,10 @@ textarea {
 
 .hidden {
     display: none!important;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 2em;
+  }
 }

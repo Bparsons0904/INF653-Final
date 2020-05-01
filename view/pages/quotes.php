@@ -100,25 +100,17 @@
         <?php
         // If the vehicle table is empty diplay message
         if (count($quotes) == 0) {
-        ?>
+            if ($approval) { ?>
+                <div id="no-match">
+                <h2>All Quotes have been approved!</h2>
+            </div>
+           <?php } else { ?>
+        
             <div id="no-match">
                 <h2>No Quotes found with the current search criteria</h2>
                 <h4>Please adjust your selections</h4>
             </div>
-        <?php } ?>
+        <?php }} ?>
 
     </div>
 </section>
-
-
-
-<!-- <p><?php echo $quote['categoryName']; ?> Quote</p>
-<div class="quote-wrapper">
-    <img src="https://picsum.photos/id/<?php echo $quote["quoteID"] ?>/400/" alt="">
-    <div class="text-wrapper">
-        <blockquote>
-            <?php echo $quote['text']; ?>
-        </blockquote>
-    </div>
-    <cite><?php echo $quote['authorName']; ?></cite>
-</div> -->

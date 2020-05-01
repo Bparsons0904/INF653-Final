@@ -41,18 +41,17 @@
 
 <!-- Main section of page -->
 <section class="container" id="login">
-    <h1 class="text-center header">Admin Login</h1>
+    <h1 class="">Admin Login</h1>
     <div class="grid-form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <div>
+            <div class="login-card">
                 <div class="grid-form-group">
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" />
+                    <input type="text" name="username" id="username" placeholder="Username" />
                     <p><?php echo $error_username ?></p>
                 </div>
                 <div class="grid-form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password"/>
+
+                    <input type="password" name="password" id="password" placeholder="Password"/>
                     <p><?php echo $error_password ?></p>
                 </div>
             <div class="submit-button">

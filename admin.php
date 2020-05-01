@@ -57,7 +57,7 @@ if (!$loggedIn) {
     header("Location: admin.php");
 } else {
     $authorID = filter_input(INPUT_GET, 'authorID', FILTER_VALIDATE_INT);
-$categoryID = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
+    $categoryID = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
     $quotes = getQuotes($authorID, $categoryID, 0);
     $display = 'view/pages/quotes.php';
 }
@@ -85,4 +85,4 @@ include('view/pages/header.php');
 include('view/pages/navigation_admin.php');
 // include('view/pages/quotes.php');
 include($display);
-    // include('view/pages/footer.php');
+include('view/pages/footer.php');

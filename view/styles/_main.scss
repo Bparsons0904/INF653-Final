@@ -5,18 +5,19 @@
   top: 0;
   left: 0;
   z-index: -5;
+  video {
+    height: 100%;
+  }
 }
 
-
-
 #quotes-display {
-  
   .select-container {
     position: sticky;
     top: 0;
     display: grid;
     justify-items: center;
     margin: 0 auto 2em;
+    max-width: 400px;
     .select-wrapper {
       width: 85%;
       background: #000;
@@ -28,7 +29,7 @@
       padding: 0;
     }
     .toggle-btn {
-      margin-top: .5em;
+      margin-top: 0.5em;
     }
     .textarea {
       width: 100%;
@@ -39,20 +40,25 @@
       background-color: #d7f93b;
       color: $color-dark;
     }
-
   }
 
   #quote-container {
     width: 100%;
+    max-width: 600px;
+    margin: auto;
+
     .quote-container {
       .card {
         background-color: #0000008a;
         padding: 0.5em 1em;
-        margin: 0 auto 1em;
+        margin: 1em auto 2em;
+        break-inside: avoid;
+        display: inline-block;
+        width: 90%;
         blockquote {
           font-size: 1.7em;
           margin: 0em;
-          padding: .5em;
+          padding: 0.5em;
           font-family: $font-cursive;
         }
         p {
@@ -70,13 +76,12 @@
         display: flex;
         margin: auto;
         .btn {
-          font-size: .8em;
-          padding: .5em;
+          font-size: 0.8em;
+          padding: 0.5em;
         }
         .approve-btn {
           margin-right: 1em;
         }
-        
       }
     }
     .delete-btn {
@@ -90,56 +95,49 @@
 
   #no-match {
     text-align: center;
-
   }
+}
 
-  // #quote-container {
-  //   width: 100%;
+footer {
+  text-align: center;
+  padding: 0.5em;
+}
 
-  //   .quote-wrapper {
-  //     box-sizing: border-box;
-  //     position: relative;
-  //     width: 100%;
-  //     margin-bottom: 2em;
+#login {
+  h1 {
+    text-align: center;
+  }
+  .grid-form {
+    width: 100%;
+    .login-card {
+      width: 300px;
+      margin: auto;
+      .grid-form-group {
+        input {
+          margin: auto;
+          display: block;
+        }
 
-  //     .img-container {
-  //       z-index: 0;
+        width: 100%;
+      }
+    }
+    .submit-button {
+      button {
+        margin: auto;
+        display: block;
+        border: none;
+        height: unset;
 
-  //     }
-  //     img {
+      }
+    }
+  }
+}
 
-  //       height: auto;
-  //       width: 100%;
-  //     }
-  //     .text-wrapper {
-
-  //       position: absolute;
-  //       top: 50%;
-  //       left: 50%;
-  //       transform: translate(-50%, -50%);
-  //       z-index: 1;
-  //       width: 100%;
-  //       height: 100%;
-
-  //       blockquote {
-
-  //         padding: .5em;
-  //         font-size: 1.5em;
-  //         font-weight: bold;
-  //         margin: 0;
-
-  //       }
-
-  //     }
-  //     cite {
-  //       position: absolute;
-  //       bottom: 3px;
-  //       right: 0;
-  //       float: right;
-  //       font-size: 1em;
-  //       padding: .5em;
-
-  //     }
-  //   }
-  // }
+@media (min-width: 1024px) {
+  #quotes-display {
+    #quote-container {
+      max-width: 1200px;
+      columns: 2;
+    }
+  }
 }
