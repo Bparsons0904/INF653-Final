@@ -63,6 +63,25 @@
         }
       }
     }
+    .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      .btn-group {
+        display: flex;
+        margin: auto;
+        .btn {
+          font-size: .8em;
+          padding: .5em;
+        }
+        .approve-btn {
+          margin-right: 1em;
+        }
+        
+      }
+    }
+    .delete-btn {
+      background-color: $color-warning;
+    }
   }
 
   #submit-grp {

@@ -1,5 +1,5 @@
 <?php
-    require('../../model/db.php');
+    require('./model/db.php');
     
     function is_username_active($username) {
         // Open Database

@@ -25,8 +25,10 @@
         $authorIDSubmit = filter_input(INPUT_POST, 'authorIDSubmit', FILTER_VALIDATE_INT);
         $categoryIDSubmit = filter_input(INPUT_POST, 'categoryIDSubmit', FILTER_VALIDATE_INT);
         $textsubmit = htmlspecialchars(filter_input(INPUT_POST, 'textsubmit'));
-        addQuote($textsubmit, $authorIDSubmit, $categoryIDSubmit);
+        addQuote($textsubmit, $authorIDSubmit, $categoryIDSubmit, false);
     }
+
+    $loggedIn = false;
     // print_r($quotes);
     // Include required files
     include('view/pages/header.php');

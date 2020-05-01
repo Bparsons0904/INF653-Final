@@ -54,35 +54,52 @@ function getApprovals()
 }
 
 // Delete item from database
-function deleteVehicle($vehicleID)
+function deleteQuote($quoteID)
 {
     // Open database
     global $db;
     // Get item based on item ID
-    $query = 'DELETE FROM vehicles
-                WHERE vehicleID = :vehicleID';
+    $query = 'DELETE FROM quotes
+                WHERE quoteID = :quoteID';
     // PDO delete item from database
     $statement = $db->prepare($query);
-    $statement->bindValue(':vehicleID', $vehicleID);
+    $statement->bindValue(':quoteID', $quoteID);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+// Delete item from database
+function approveQuote($quoteID)
+{
+    // Open database
+    global $db;
+    // Get item based on item ID
+    $query = 'UPDATE quotes
+                SET approved = 1
+                WHERE quoteID = :quoteID';
+    // PDO delete item from database
+    $statement = $db->prepare($query);
+    $statement->bindValue(':quoteID', $quoteID);
     $statement->execute();
     $statement->closeCursor();
 }
 
 // // Add to do item to database
-function addQuote($text, $authorID, $categoryID)
+function addQuote($text, $authorID, $categoryID, $approved)
 {
     // Open database
     global $db;
     // Set query for item to be added
     $query = 'INSERT INTO quotes
-                 (text, authorID, categoryID)
+                 (text, authorID, categoryID, approved)
               VALUES
-                 (:text, :authorID, :categoryID)';
+                 (:text, :authorID, :categoryID, :approved)';
     // PDO insert item into database
     $statement = $db->prepare($query);
     $statement->bindValue(':text', $text);
     $statement->bindValue(':authorID', $authorID);
     $statement->bindValue(':categoryID', $categoryID);
+    $statement->bindValue(':approved', $approved);
     $statement->execute();
     $statement->closeCursor();
 }

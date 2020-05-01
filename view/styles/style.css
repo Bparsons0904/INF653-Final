@@ -86,15 +86,33 @@ textarea {
   color: #C03D29;
 }
 
-#user-nav a {
+.hidden {
+  display: none !important;
+}
+
+nav a {
   padding: 0;
   margin: 0 0 0 1em;
   -webkit-align-self: center;
       -ms-flex-item-align: center;
               -ms-grid-row-align: center;
           align-self: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
+}
+
+nav .links {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+              -ms-grid-row-align: center;
+          align-self: center;
+  margin-left: auto;
+  margin-right: 1em;
+}
+
+nav .links div {
+  font-size: .9em;
+  border-bottom: solid 1px #169b71;
 }
 
 .header {
@@ -176,6 +194,38 @@ textarea {
   text-align: right;
   font-size: 0.9em;
   font-style: italic;
+}
+
+#quotes-display #quote-container .bottom-row {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#quotes-display #quote-container .bottom-row .btn-group {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
+}
+
+#quotes-display #quote-container .bottom-row .btn-group .btn {
+  font-size: .8em;
+  padding: .5em;
+}
+
+#quotes-display #quote-container .bottom-row .btn-group .approve-btn {
+  margin-right: 1em;
+}
+
+#quotes-display #quote-container .delete-btn {
+  background-color: #C03D29;
 }
 
 #quotes-display #submit-grp {

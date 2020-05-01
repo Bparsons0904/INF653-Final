@@ -1,7 +1,9 @@
 <section id="quotes-display">
     <div class="container">
-        <form action="index.php" method="GET" id="form-change" class="">
-            <div id="filter-grp" class="select-container">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET" id="form-change" class="">
+            <input type="hidden" name="action" value="" id="action" />
+            <input type="hidden" name="quoteID" value="" id="quoteID" />
+            <div id="filter-grp" class="select-container <?php echo $approval ? "hidden" : "" ?>">
                 <div class="select-wrapper">
                     <div class="select-group">
                         <select class="select-dropdown" id="categoryID" name="categoryID" onchange="formChange()">
@@ -43,7 +45,7 @@
                         </select>
                     </div>
                     <div class="select-group">
-                        <select class="select-dropdown" id="authorIDSubmit" name="authorIDSubmit" onchange="checkValid()" >
+                        <select class="select-dropdown" id="authorIDSubmit" name="authorIDSubmit" onchange="checkValid()">
                             <option value="0">Select Author</option>
                             <!-- Loop through each author  -->
                             <?php foreach ($authors as $author) : ?>
@@ -76,6 +78,19 @@
                             <?php echo $quote['text']; ?>
                         </blockquote>
                         <p><?php echo $quote['authorName']; ?> on <?php echo $quote['categoryName']; ?></p>
+                        <div class="bottom-row">
+                            <?php if ($loggedIn && $approval) { ?>
+                                <div class="btn-group">
+                                    <div class="btn approve-btn" onclick="updateEntry(<?php echo $quote['quoteID'] ?>, 'approve')"><i class="far fa-thumbs-up"></i> Approve</div>
+                                    <div class="btn delete-btn" onclick="updateEntry(<?php echo $quote['quoteID'] ?>, 'delete')"><i class="far fa-thumbs-down"></i> Delete</div>
+                                </div>
+
+                            <?php } else if ($loggedIn) { ?>
+                                <div class="btn delete-btn" onclick="updateEntry(<?php echo $quote['quoteID'] ?>, 'delete')"><i class="far fa-thumbs-down"></i> Delete</div>
+                            <?php } ?>
+
+                        </div>
+
 
                     </div>
                 </div>

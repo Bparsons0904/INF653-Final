@@ -81,5 +81,9 @@ textarea {
     text-align: center;
     font-size: 1.5em;
     font-weight: bold;
-    color: #C03D29;
+    color: $color-warning;
+}
+
+.hidden {
+    display: none!important;
 }
