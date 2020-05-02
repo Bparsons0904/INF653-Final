@@ -11,7 +11,6 @@ include_once '../model/quotes_db.php';
 
 // Init gloabl db variable
 global $db;
-
 // If GET request, return quotes based on selections
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Init variables based on GET paramaters
@@ -27,13 +26,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Return quotes in JSON form
     echo json_encode($quotes);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Convert JSON to array
-    $data = json_decode(file_get_contents("php://input"));
-    $text = htmlspecialchars(strip_tags($data->text));
-    $authorID = htmlspecialchars(strip_tags($data->authorID));
-    $categoryID = htmlspecialchars(strip_tags($data->categoryID));
-    // Submit quote to DB, unapproved
-    addQuote($text, $authorID, $categoryID, false);
+    // Check is header has been set
+    if (!isset($_SERVER["CONTENT_TYPE"])) {
+        // Return error message
+        $data = array("message" => "Required: Content-Type header.");
+        header('Content-Type: application/json');
+        echo json_encode($data);
+    } else {
+        // Convert JSON to array
+        $data = json_decode(file_get_contents("php://input"));
+        $text = htmlspecialchars(strip_tags($data->text));
+        $authorID = htmlspecialchars(strip_tags($data->authorId));
+        $categoryID = htmlspecialchars(strip_tags($data->categoryId));
+        // Submit quote to DB, unapproved
+        addQuote($text, $authorID, $categoryID, false);
+        $data = array("message" => "Quote submitted for approval.");
+        echo json_encode($data);
+    }
 } else {
     // No data sent, return error message
     $data = array("message" => "You did not send a GET or POST Request");
