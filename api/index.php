@@ -15,8 +15,8 @@ global $db;
 // If GET request, return quotes based on selections
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Init variables based on GET paramaters
-    $authorID = filter_input(INPUT_GET, 'authorID', FILTER_VALIDATE_INT);
-    $categoryID = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
+    $authorID = filter_input(INPUT_GET, 'authorId', FILTER_VALIDATE_INT);
+    $categoryID = filter_input(INPUT_GET, 'categoryId', FILTER_VALIDATE_INT);
     $limit = filter_input(INPUT_GET, 'limit', FILTER_VALIDATE_INT);
     // Check if random param used
     $random = htmlspecialchars(filter_input(INPUT_GET, 'random')) == 'true' ? true : false;
