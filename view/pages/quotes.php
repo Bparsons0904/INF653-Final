@@ -1,3 +1,4 @@
+<!-- Main section for displaying quotes -->
 <section id="quotes-display">
     <div class="container">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="GET" id="form-change" class="">
@@ -58,24 +59,21 @@
                     <div class="textarea">
                         <textarea name="textsubmit" id="textsubmit" placeholder="Enter Quote" onkeyup="checkValid()"></textarea>
                     </div>
+                    <!-- Before submission, validate form information completed -->
                     <div onclick="checkValid(true)" class="btn btn-clear toggle-btn disabled" id="submit-quote-btn">Submit New Quote</div>
                     <div onclick="closeSubmit()" class="btn btn-clear toggle-btn cancel-btn"><i class="fas fa-ban"></i> Cancel Submition</div>
                 </div>
                 <div id="warning"></div>
             </div>
         </form>
-        <!-- <div id="submit-form-container">
-            <form action="POST">
 
-            </form>
-        </div> -->
         <div id="quote-container">
+            <!-- Loop through all quotes and display individual quotes -->
             <?php foreach ($quotes as $quote) : ?>
                 <div class="quote-container">
                     <div class="card">
-
                         <blockquote>
-                            <?php echo $quote['text']; ?>
+                            "<?php echo $quote['text']; ?>"
                         </blockquote>
                         <p><?php echo $quote['authorName']; ?> on <?php echo $quote['categoryName']; ?></p>
                         <div class="bottom-row">
@@ -84,33 +82,28 @@
                                     <div class="btn approve-btn" onclick="updateEntry(<?php echo $quote['quoteID'] ?>, 'approve')"><i class="far fa-thumbs-up"></i> Approve</div>
                                     <div class="btn delete-btn" onclick="updateEntry(<?php echo $quote['quoteID'] ?>, 'delete')"><i class="far fa-thumbs-down"></i> Delete</div>
                                 </div>
-
                             <?php } else if ($loggedIn) { ?>
                                 <div class="btn delete-btn" onclick="updateEntry(<?php echo $quote['quoteID'] ?>, 'delete')"><i class="far fa-thumbs-down"></i> Delete</div>
                             <?php } ?>
-
                         </div>
-
-
                     </div>
                 </div>
-
             <?php endforeach; ?>
         </div>
         <?php
-        // If the vehicle table is empty diplay message
+        // If the quotes table is empty diplay message
         if (count($quotes) == 0) {
             if ($approval) { ?>
                 <div id="no-match">
-                <h2>All Quotes have been approved!</h2>
-            </div>
-           <?php } else { ?>
-        
-            <div id="no-match">
-                <h2>No Quotes found with the current search criteria</h2>
-                <h4>Please adjust your selections</h4>
-            </div>
-        <?php }} ?>
+                    <h2>All Quotes have been approved!</h2>
+                </div>
+            <?php } else { ?>
+                <div id="no-match">
+                    <h2>No Quotes found with the current search criteria</h2>
+                    <h4>Please adjust your selections</h4>
+                </div>
+        <?php }
+        } ?>
 
     </div>
 </section>

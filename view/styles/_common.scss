@@ -1,3 +1,4 @@
+// CSS Used on all pages
 body {
   margin: 0;
   padding: 0;
@@ -57,35 +58,28 @@ figure {
   display: block;
   height: 2em;
   font-size: 1.1em;
-  border-color: $color-dark;
-  outline: $color-dark auto 1px;
-}
-.select-dropdown:focus {
-  outline: $color-dark auto 1px;
-  border-color: $color-dark;
 }
 textarea {
-    width: 100%;
-    height: 6em;
-    font-family: $font-sans;
-    font-size: 1.1em;
-  }
+  width: 100%;
+  height: 6em;
+  font-family: $font-sans;
+  font-size: 1.1em;
+}
 
-  .disabled {
-    // pointer-events: none;
-    opacity: 0.4;
+.disabled {
+  opacity: 0.4;
 }
 
 #warning {
-    margin: 1em auto;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: $color-warning;
+  margin: 1em auto;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: $color-warning;
 }
 
 .hidden {
-    display: none!important;
+  display: none !important;
 }
 
 @media (min-width: 768px) {

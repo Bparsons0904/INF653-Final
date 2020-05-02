@@ -1,12 +1,3 @@
-<?php
-// Check if session has been started, if not start session
-// session_status() === PHP_SESSION_ACTIVE ? '' : session_start();
-// if (isset($_SESSION['firstname'])) {
-//   // Set variable to cookie name
-//   $firstname = $_SESSION['firstname'];
-// }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 

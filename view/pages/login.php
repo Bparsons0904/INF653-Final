@@ -1,41 +1,40 @@
 <?php
-
-    // Set variables for error messages
-    $error_username = "";
-    $error_password = "";
-    // Check if post are empty
-    if (!empty($_POST)) {
-        // Add in admin database
-        require_once('./model/admin_db.php');
-        // Set variables to POST input values
-        $username = filter_input(INPUT_POST, 'username');
-        $password = filter_input(INPUT_POST, 'password');
-        // Check if username or pasword is empty
-        if (empty($username) || empty($password)) {
-            // If username empty, add error message 
-            if (empty($username)) {
-                $error_username = "Please include username";
+// Set variables for error messages
+$error_username = "";
+$error_password = "";
+// Check if post are empty
+if (!empty($_POST)) {
+    // Add in admin database
+    require_once('./model/admin_db.php');
+    // Set variables to POST input values
+    $username = filter_input(INPUT_POST, 'username');
+    $password = filter_input(INPUT_POST, 'password');
+    // Check if username or pasword is empty
+    if (empty($username) || empty($password)) {
+        // If username empty, add error message 
+        if (empty($username)) {
+            $error_username = "Please include username";
             // Display password error message
-            } else {
-                $error_password = "Please include password";
-            }
-        // No empty values, validate user password
         } else {
-            // Check if password matches
-            if (is_valid_admin_login($username, $password)) {
-                // Start cookie session and set admin value to logged in 
-                session_status() === PHP_SESSION_ACTIVE ? '' : session_start();
-                $_SESSION["is_valid_admin"] = true;
-                // Redirect to main page
-                header("Location: ./admin.php");
+            $error_password = "Please include password";
+        }
+        // No empty values, validate user password
+    } else {
+        // Check if password matches
+        if (is_valid_admin_login($username, $password)) {
+            // Start cookie session and set admin value to logged in 
+            session_status() === PHP_SESSION_ACTIVE ? '' : session_start();
+            $_SESSION["is_valid_admin"] = true;
+            // Redirect to main page
+            header("Location: ./admin.php");
             // Password is incorrect, add error message
-            } else {
-                $error_password = "Incorrect Password";
-            }
+        } else {
+            $error_password = "Incorrect Password";
         }
     }
+}
 
-    // Display core of html head and nav
+// Display core of html head and nav
 
 ?>
 
@@ -51,12 +50,12 @@
                 </div>
                 <div class="grid-form-group">
 
-                    <input type="password" name="password" id="password" placeholder="Password"/>
+                    <input type="password" name="password" id="password" placeholder="Password" />
                     <p><?php echo $error_password ?></p>
                 </div>
-            <div class="submit-button">
-                <button type="submit" class="btn btn-color">Login</button>
-            </div>          
+                <div class="submit-button">
+                    <button type="submit" class="btn btn-color">Login</button>
+                </div>
         </form>
     </div>
 </section>

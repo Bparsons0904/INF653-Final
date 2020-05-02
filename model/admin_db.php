@@ -18,21 +18,6 @@
         return $result == 1 ? true : false;
     }
 
-    function add_admin($username, $password) {
-        // Open Database
-        global $db;
-        // Hash password
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-        // Query to insert into DB
-        $query = 'INSERT INTO administrators (username, password)
-                VALUES (:username, :password)';
-        $statement = $db->prepare($query);
-        $statement->bindValue(':username', $username);
-        $statement->bindValue(':password', $hash);
-        $statement->execute();
-        $statement->closeCursor();
-    }
-
     function is_valid_admin_login($username, $password) {
         // Open Database
         global $db;

@@ -17,29 +17,36 @@ function clearFilters(submit = true) {
   submit ? this.formChange() : null;
 }
 
+// Close filter group and open submission form
 function openSubmit() {
   document.getElementById("filter-grp").style.display = "none";
   document.getElementById("quote-container").style.display = "none";
   document.getElementById("submit-grp").style.display = "block";
   clearFilters(false);
 }
+
+// Open filter group and close submission form
 function closeSubmit() {
   document.getElementById("filter-grp").style.display = "block";
   document.getElementById("quote-container").style.display = "block";
   document.getElementById("submit-grp").style.display = "none";
 }
 
+// Validate form meets criteria before submission
 function checkValid(submit = false) {
   let count = 0;
+  // If element does not meet validation requirments, increment count
   document.getElementById("categoryIDSubmit").value == 0 ? count++ : "";
   document.getElementById("authorIDSubmit").value == 0 ? count++ : "";
   document.getElementById("textsubmit").value.length < 10 ? count++ : "";
+  // If count has value, validation failed. Update submit form if valid
   if (count == 0) {
     document.getElementById("submit-quote-btn").classList.remove("disabled");
     document.getElementById("warning").innerHTML = "";
   } else {
     document.getElementById("submit-quote-btn").classList.add("disabled");
   }
+  // Submission request made, submit if no errors
   if (submit == true) {
     if (count == 0) {
       document.getElementById("action").value = "submit";
@@ -49,6 +56,7 @@ function checkValid(submit = false) {
     }
   }
 }
+
 // Open appropriate nav page based on selection
 function navControl(action) {
   // Clear URL Params
